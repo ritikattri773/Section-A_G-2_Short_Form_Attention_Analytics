@@ -1,0 +1,38 @@
+============================================================
+ETL RUN METADATA
+============================================================
+Run timestamp           : 2026-04-29 22:42:17
+Source file             : cleaned_data_userID__1_.csv
+Source rows             : 11,988
+Source columns          : 15
+
+Post-transform shape   : (11988, 40)
+Columns added           : 25
+
+Null imputation:
+  notifications_per_day      : median imputation (220 nulls, 1.84%)
+  physical_activity_hours_week: median imputation (490 nulls, 4.09%)
+
+Features engineered:
+  age_group              : 5-bucket ordinal age bins
+  screen_time_severity   : composite score (reels + screen + scrolling)
+  wellness_score         : composite score (sleep + activity - notifications)
+  productivity_index     : composite score (focus + attention + task)
+  high_screen_time_flag  : binary (daily_screen_time > 8h)
+  poor_sleep_flag        : binary (sleep_hours < 6h)
+  reels_to_screen_ratio  : reels / daily_screen_time
+
+Encoding:
+  stress_level_encoded   : ordinal (Low=1, Medium=2, High=3)
+  gender                 : one-hot
+  location               : one-hot
+  platform               : one-hot
+
+Normalization:
+  10 numeric columns min-max normalized (suffix _norm)
+
+Output files:
+  full_csv             : /Users/kapilkaranmathur/Documents/Section-A_G-2_Short_Form_Attention_Analytics/etl_output/transformed_full_20260429_224217.csv
+  ml_csv               : /Users/kapilkaranmathur/Documents/Section-A_G-2_Short_Form_Attention_Analytics/etl_output/ml_ready_20260429_224217.csv
+  stats_csv            : /Users/kapilkaranmathur/Documents/Section-A_G-2_Short_Form_Attention_Analytics/etl_output/summary_stats_20260429_224217.csv
+============================================================
